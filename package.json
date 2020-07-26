@@ -1,0 +1,36 @@
+{
+  "name": "run-parallel-settled",
+  "version": "0.0.0",
+  "description": "Run an array of functions in parallel, wait to finish when one errors",
+  "license": "MIT",
+  "author": "Vincent Weevers",
+  "scripts": {
+    "test": "standard && hallmark && nyc node test"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "maybe-combine-errors": "^1.0.0"
+  },
+  "devDependencies": {
+    "hallmark": "^2.1.0",
+    "nyc": "^15.1.0",
+    "standard": "^14.3.4",
+    "tape": "^5.0.1",
+    "uniform-integer": "^1.0.0"
+  },
+  "keywords": [
+    "async",
+    "parallel",
+    "run",
+    "settled",
+    "tasks"
+  ],
+  "repository": "vweevers/run-parallel-settled",
+  "bugs": "https://github.com/vweevers/run-parallel-settled/issues",
+  "homepage": "https://github.com/vweevers/run-parallel-settled",
+  "engines": {
+    "node": ">=10"
+  }
+}
