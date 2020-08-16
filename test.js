@@ -262,6 +262,35 @@ test('errors are ordered', function (t) {
   })
 })
 
+test('error on all initial tasks', function (t) {
+  t.plan(3)
+
+  let called = false
+
+  const tasks = [
+    function (next) {
+      setTimeout(function () {
+        t.is(called, false, 'callback not yet called')
+        next(new Error('test'))
+      }, 200)
+    },
+    function (next) {
+      setTimeout(function () {
+        t.is(called, false, 'callback not yet called')
+        next(new Error('test2'))
+      }, 200)
+    },
+    function (next) {
+      t.fail('should not be called')
+    }
+  ]
+
+  parallel(tasks, 2, function (err) {
+    t.ok(err)
+    called = true
+  })
+})
+
 test('limit must be a number >= 1', function (t) {
   t.throws(() => parallel([], 'no', noop), /TypeError: The "limit" argument/)
   t.throws(() => parallel([], 0, noop), /TypeError: The "limit" argument/)

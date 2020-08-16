@@ -30,9 +30,12 @@ module.exports = function parallel (tasks, limit, callback) {
 
   function next (i, err, result) {
     if (err) {
-      if (errors === null) errors = new Array(length)
+      if (errors === null) {
+        errors = new Array(length)
+        pending -= length - position
+      }
+
       errors[i] = err
-      pending -= length - position
     } else if (errors === null) {
       results[i] = result
     }
